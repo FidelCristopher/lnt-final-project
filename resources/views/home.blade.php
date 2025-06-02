@@ -180,19 +180,30 @@
               </div>
             </div>
 
-            <!-- Login & Register -->
-            <div class="d-flex gap-3 align-items-center">
-              <a href="{{ route('login') }}"
-                class="btn"
-                style="background-color: white; color: #ff85b3; border: 1.5px solid #ff85b3; border-radius: 4px; padding: 0.375rem 1rem; font-weight: 500;">
-                Login
-              </a>
-              <a href="{{ route('register') }}"
-                class="btn"
-                style="background-color: #ff85b3; color: white; border: none; border-radius: 4px; padding: 0.375rem 1rem; font-weight: 500;">
-                Register
-              </a>
-            </div>
+            <!-- Login & Register / Profile -->
+                <div class="d-flex gap-3 align-items-center">
+                    @guest
+                        <a href="{{ route('login') }}"
+                            class="btn"
+                            style="background-color: white; color: #ff85b3; border: 1.5px solid #ff85b3; border-radius: 4px; padding: 0.375rem 1rem; font-weight: 500;">
+                            Login
+                        </a>
+                        <a href="{{ route('register') }}"
+                            class="btn"
+                            style="background-color: #ff85b3; color: white; border: none; border-radius: 4px; padding: 0.375rem 1rem; font-weight: 500;">
+                            Register
+                        </a>
+                    @else
+                        <a href="{{ route('profile.show') }}"
+                            class="btn"
+                            style="background-color: transparent; color: #ff85b3; border: 1.5px solid #ff85b3; border-radius: 4px; padding: 0.375rem 1rem; font-weight: 500;">
+                            Profile
+                        </a>
+                    @endguest
+                </div>
+
+
+
 
             <!-- Your Cart di kanan -->
             <div class="cart text-end d-none d-lg-block dropdown ms-3">
