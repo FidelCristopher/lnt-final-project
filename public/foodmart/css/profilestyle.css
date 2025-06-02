@@ -1,0 +1,124 @@
+/* Reset atau pengaturan dasar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5; /* Warna latar belakang halaman, sesuaikan jika perlu */
+    display: flex;
+    justify-content: center; /* Untuk menengahkan konten utama */
+    align-items: flex-start; /* Mengatur item dari atas */
+    min-height: 100vh;
+    padding-top: 20px; /* Jarak dari atas */
+}
+
+/* Gaya untuk kontainer utama jika ada sidebar */
+.main-content {
+    flex-grow: 1; /* Mengisi ruang yang tersedia */
+    padding: 20px; /* Padding di sekitar konten utama */
+    margin-left: 200px; /* Sesuaikan jika ada sidebar dengan lebar tertentu */
+    display: flex;
+    justify-content: center; /* Untuk menengahkan profile card di dalamnya */
+    width: 100%; /* Memastikan ini mengambil lebar penuh */
+    max-width: calc(100% - 200px); /* Contoh jika ada sidebar 200px */
+}
+
+/* Gaya untuk Profile Card */
+.profile-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 100%;
+    max-width: 500px; /* Lebar maksimum kartu profil, bisa disesuaikan */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Jarak antar elemen di dalam kartu */
+}
+
+.profile-card__title {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee; /* Garis bawah seperti di contoh */
+}
+
+.profile-card__detail p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5; /* Jarak antar baris */
+    margin-bottom: 8px; /* Jarak antar detail */
+}
+
+.profile-card__detail p:last-child {
+    margin-bottom: 0; /* Hapus margin bawah dari item terakhir */
+}
+
+.profile-card__detail strong {
+    color: #333; /* Warna lebih gelap untuk label */
+    margin-right: 5px;
+}
+
+.profile-card__button {
+    background-color: #007bff; /* Warna biru, sesuaikan */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: flex-start; /* Agar tombol tidak melebar penuh dan berada di kiri */
+}
+
+.profile-card__button:hover {
+    background-color: #0056b3; /* Warna biru lebih gelap saat hover */
+}
+
+/* Media Queries untuk Responsivitas */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0; /* Hapus margin sidebar di layar kecil */
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .profile-card {
+        padding: 20px;
+        max-width: 90%; /* Lebih kecil di layar kecil */
+    }
+
+    .profile-card__title {
+        font-size: 18px;
+    }
+
+    .profile-card__detail p {
+        font-size: 14px;
+    }
+
+    .profile-card__button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-card {
+        padding: 15px;
+        max-width: 100%; /* Lebar penuh di ponsel */
+        border-radius: 0; /* Mungkin tidak ada border-radius di ponsel untuk tampilan 'edge-to-edge' */
+    }
+
+    .profile-card__title {
+        text-align: center; /* Tengahkan judul di ponsel */
+    }
+
+    .profile-card__button {
+        width: 100%; /* Tombol melebar penuh di ponsel */
+        text-align: center;
+    }
+}
