@@ -4,6 +4,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AdminOnly;
+
 
 Route::get('/', function () {
     return view('home');
@@ -19,6 +21,20 @@ Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
 // Logout route
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+// Admin dashboard routes
+Route::middleware(['auth', AdminOnly::class])->group(function () {
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+
+
 
 // Group route dengan middleware auth untuk profile
 Route::middleware('auth')->group(function () {

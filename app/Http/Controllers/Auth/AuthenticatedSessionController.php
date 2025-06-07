@@ -11,20 +11,37 @@ use Illuminate\View\View;
 
 class AuthenticatedSessionController extends Controller
 {
+    /**
+     * Tampilkan halaman login
+     */
     public function create(): View
     {
         return view('auth.login');
     }
 
+    /**
+     * Proses login
+     */
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
 
         $request->session()->regenerate();
 
+        $user = Auth::user();
+
+        // Cek jika user adalah admin
+        if ($user->email === 'admin@gmail.com') {
+            return redirect()->intended('/admin/dashboard');
+        }
+
+        // Jika bukan admin, arahkan ke home biasa
         return redirect()->intended(route('home'));
     }
 
+    /**
+     * Logout user
+     */
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
