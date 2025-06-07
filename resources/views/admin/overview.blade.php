@@ -4,10 +4,8 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
-    <title>Add New Product</title>
+    <title>Overview Product</title>
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    <meta charset="UTF-8">
-    <title>Overview</title>
 </head>
 <body>
     <div class="sidebar">
@@ -21,6 +19,7 @@
         </nav>
     </div>
 
-    <h1>This is the Overview page</h1>
+    <div class="main">
+        <h1>Overview Page</h1>
 </body>
 </html>

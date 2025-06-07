@@ -75,7 +75,9 @@
       <div class="form-group">
         <label>Product Category</label>
         <select>
-          <option>Jacket</option>
+          <option>Cake</option>
+          <option>Chocolate</option>
+          <option>Candy</option>
         </select>
       </div>
       <button class="btn btn-secondary">Add Category</button>
