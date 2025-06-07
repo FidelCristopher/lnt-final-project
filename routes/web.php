@@ -24,16 +24,18 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name
 
 // Admin dashboard routes
 Route::middleware(['auth', AdminOnly::class])->group(function () {
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/admin/product', function () {
+        return view('admin.product');
+    })->name('admin.product');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/admin/product', function () {
+    return view('admin.product');
+})->middleware(['auth'])->name('product');
 
-
+Route::get('/admin/overview', function () {
+    return view('admin.overview');
+})->name('overview');
 
 
 // Group route dengan middleware auth untuk profile

@@ -32,11 +32,11 @@ class AuthenticatedSessionController extends Controller
 
         // Cek jika user adalah admin
         if ($user->email === 'admin@gmail.com') {
-            return redirect()->intended('/admin/dashboard');
+            return redirect()->intended('/admin/product');
         }
 
         // Jika bukan admin, arahkan ke home biasa
-        return redirect()->intended(route('home'));
+        return redirect()->route('home');
     }
 
     /**
