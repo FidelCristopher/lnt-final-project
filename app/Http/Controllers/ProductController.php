@@ -79,5 +79,20 @@ class ProductController extends Controller
         return redirect()->route('overview')->with('success', 'Product updated successfully!');
     }
 
+    public function destroy($id)
+    {
+        $product = Product::findOrFail($id);
+
+        // Hapus gambar dari storage
+        if ($product->image) {
+            \Storage::disk('public')->delete($product->image);
+        }
+
+        $product->delete();
+
+        return redirect()->route('overview')->with('success', 'Product deleted successfully!');
+    }
+
+
 
 }
