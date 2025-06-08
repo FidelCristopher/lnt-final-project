@@ -108,20 +108,20 @@
 
     .product-grid {
         display: grid;
-        grid-template-columns: repeat(1, 1fr); /* default 1 kolom untuk layar kecil */
+        grid-template-columns: repeat(1, 1fr);
         gap: 1rem;
         width: 100%;
     }
 
     @media (min-width: 600px) {
         .product-grid {
-            grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk layar sedang */
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 
     @media (min-width: 900px) {
         .product-grid {
-            grid-template-columns: repeat(3, 1fr); /* 3 kolom untuk layar besar */
+            grid-template-columns: repeat(3, 1fr);
         }
     }
 
@@ -131,7 +131,6 @@
         padding: 1rem;
         box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
         text-align: center;
-        /* width dihapus supaya fleksibel mengikuti grid */
     }
 
     .product-image {

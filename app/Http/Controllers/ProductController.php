@@ -10,14 +10,12 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    // Tampilkan semua produk di halaman product
     public function index()
     {
         $products = Product::all();
         return view('admin.product', compact('products'));
     }
 
-    // Simpan produk baru
     public function store(Request $request)
     {
         $request->validate([
@@ -41,7 +39,6 @@ class ProductController extends Controller
             'category' => $request->category,
         ]);
 
-        // Redirect ke route admin/overview setelah berhasil tambah product
         return redirect()->route('overview')->with('success', 'Product added successfully!');
     }
 
@@ -65,7 +62,6 @@ class ProductController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            // Hapus gambar lama
             if ($product->image) {
                 Storage::disk('public')->delete($product->image);
             }
@@ -83,7 +79,6 @@ class ProductController extends Controller
     {
         $product = Product::findOrFail($id);
 
-        // Hapus gambar dari storage
         if ($product->image) {
             Storage::disk('public')->delete($product->image);
         }

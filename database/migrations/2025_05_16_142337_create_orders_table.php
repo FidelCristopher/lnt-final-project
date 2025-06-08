@@ -9,9 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->uuid('id')->primary();  // UUID sebagai primary key
-
-            // user_id sebagai UUID, foreign key ke tabel users dengan cascade on delete dan update
+            $table->uuid('id')->primary();
             $table->uuid('user_id');
             $table->foreign('user_id')
                   ->references('id')
@@ -19,7 +17,6 @@ return new class extends Migration
                   ->cascadeOnDelete()
                   ->cascadeOnUpdate();
 
-            // total_price sebagai big integer
             $table->bigInteger('total_price');
 
             $table->timestamps();
