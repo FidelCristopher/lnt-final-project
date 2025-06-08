@@ -29,15 +29,15 @@
 
         <h2>Product List</h2>
         @if($products->count())
-            <ul>
+            <div class="product-grid">
                 @foreach($products as $product)
-                    <li>
-                        {{ $product->name }} - Rp {{ number_format($product->price) }}<br>
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" width="100" style="display:block; margin-bottom: 0.5rem;">
-                    </li>
+                    <div class="product-card">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
+                        <h3>{{ $product->name }}</h3>
+                        <p>Rp {{ number_format($product->price) }}</p>
+                    </div>
                 @endforeach
-
-            </ul>
+            </div>
         @else
             <p>No products found.</p>
         @endif

@@ -1,4 +1,4 @@
-* {
+*   {
       box-sizing: border-box;
       font-family: 'Inter', sans-serif;
     }
@@ -105,3 +105,41 @@
       margin-right: 0.5rem;
       border-radius: 5px;
     }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* default 1 kolom untuk layar kecil */
+        gap: 1rem;
+        width: 100%;
+    }
+
+    @media (min-width: 600px) {
+        .product-grid {
+            grid-template-columns: repeat(2, 1fr); /* 2 kolom untuk layar sedang */
+        }
+    }
+
+    @media (min-width: 900px) {
+        .product-grid {
+            grid-template-columns: repeat(3, 1fr); /* 3 kolom untuk layar besar */
+        }
+    }
+
+    .product-card {
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        padding: 1rem;
+        box-shadow: 2px 2px 6px rgba(0,0,0,0.1);
+        text-align: center;
+        /* width dihapus supaya fleksibel mengikuti grid */
+    }
+
+    .product-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        margin-bottom: 0.5rem;
+    }
+
+
+
