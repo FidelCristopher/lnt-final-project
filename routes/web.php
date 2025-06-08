@@ -5,6 +5,9 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminOnly;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OverviewController;
+
 
 
 Route::get('/', function () {
@@ -37,6 +40,13 @@ Route::get('/admin/overview', function () {
     return view('admin.overview');
 })->name('overview');
 
+Route::redirect('/products', '/admin/products');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/overview', [OverviewController::class, 'index'])->name('overview');
+    Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+    Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+});
 
 // Group route dengan middleware auth untuk profile
 Route::middleware('auth')->group(function () {
