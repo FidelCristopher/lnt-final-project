@@ -64,7 +64,7 @@
             </div>
         </form>
 
-        @if(isset($products) && count($products))
+        {{-- @if(isset($products) && count($products))
         <div class="section">
             <h2>Product List</h2>
             @foreach($products as $product)
@@ -78,7 +78,7 @@
                 </div>
             @endforeach
         </div>
-        @endif
+        @endif --}}
     </div>
 </body>
 </html>
