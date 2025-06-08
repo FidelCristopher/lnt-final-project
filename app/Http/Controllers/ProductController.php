@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
+
 class ProductController extends Controller
 {
     // Tampilkan semua produk di halaman product
@@ -44,5 +45,39 @@ class ProductController extends Controller
         return redirect()->route('overview')->with('success', 'Product added successfully!');
     }
 
-    // Tambahkan method update, destroy, edit jika diperlukan
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('admin.editproduct', compact('product'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|max:30',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'stock' => 'required|integer',
+            'category' => 'required|in:cake,chocolate,candy',
+            'image' => 'nullable|image|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            // Hapus gambar lama
+            if ($product->image) {
+                Storage::disk('public')->delete($product->image);
+            }
+
+            $imagePath = $request->file('image')->store('products', 'public');
+            $product->image = $imagePath;
+        }
+
+        $product->update($request->except('image') + ['image' => $product->image]);
+
+        return redirect()->route('overview')->with('success', 'Product updated successfully!');
+    }
+
+
 }
