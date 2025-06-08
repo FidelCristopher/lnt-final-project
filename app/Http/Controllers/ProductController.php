@@ -85,7 +85,7 @@ class ProductController extends Controller
 
         // Hapus gambar dari storage
         if ($product->image) {
-            \Storage::disk('public')->delete($product->image);
+            Storage::disk('public')->delete($product->image);
         }
 
         $product->delete();

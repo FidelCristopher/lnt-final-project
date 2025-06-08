@@ -12,7 +12,7 @@
         <h2>SalesSync</h2>
         <nav>
             <a href="#" class="active">Overview</a>
-            <a href="{{ route('product') }}">Product</a>
+            <a href="{{ route('products.index') }}">Product</a>
             <a href="#">Sales</a>
             <a href="#">Payment</a>
             <a href="#">Returns</a>
@@ -46,7 +46,10 @@
                         </div>
                         <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-image">
                         <h3>{{ $product->name }}</h3>
-                        <p>Rp {{ number_format($product->price) }}</p>
+                        <p><strong>Rp {{ number_format($product->price) }}</strong></p>
+                        <p>{{ $product->description }}</p>
+                        <p><strong>Stock:</strong> {{ $product->stock }}</p>
+                        <p><strong>Category:</strong> {{ ucfirst($product->category) }}</p>
                     </div>
                 @endforeach
             </div>

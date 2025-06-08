@@ -7,17 +7,6 @@
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 </head>
 <body>
-    {{-- <div class="sidebar">
-        <h2>SalesSync</h2>
-        <nav>
-            <a href="{{ route('overview') }}">Overview</a>
-            <a href="{{ route('products.index') }}" class="active">Product</a>
-            <a href="#">Sales</a>
-            <a href="#">Payment</a>
-            <a href="#">Returns</a>
-        </nav>
-    </div> --}}
-
     <div class="main">
         <h1>Edit Product</h1>
 
@@ -27,38 +16,40 @@
 
             <div class="form-group">
                 <label>Product Name</label>
-                <input type="text" name="name" placeholder="e.g. Rainbow Donuts" required>
+                <input type="text" name="name" value="{{ old('name', $product->name) }}" placeholder="e.g. Rainbow Donuts" required>
             </div>
 
             <div class="form-group">
                 <label>Description</label>
-                <textarea name="description" rows="3" placeholder="Product description..." required></textarea>
+                <textarea name="description" rows="3" placeholder="Product description..." required>{{ old('description', $product->description) }}</textarea>
             </div>
 
             <div class="form-group">
                 <label>Price (IDR)</label>
-                <input type="number" name="price" placeholder="e.g. 50000" required>
+                <input type="number" name="price" value="{{ old('price', $product->price) }}" placeholder="e.g. 50000" required>
             </div>
 
             <div class="form-group">
                 <label>Stock</label>
-                <input type="number" name="stock" placeholder="e.g. 20" required>
+                <input type="number" name="stock" value="{{ old('stock', $product->stock) }}" placeholder="e.g. 20" required>
             </div>
 
             <div class="form-group">
                 <label>Upload Image</label>
-                <input type="file" name="image" accept="image/*" required>
+                <input type="file" name="image" accept="image/*">
+                <p>Current image: <img src="{{ asset('storage/' . $product->image) }}" alt="Current Image" width="100"></p>
             </div>
 
             <div class="form-group">
                 <label>Category</label>
                 <select name="category" required>
                     <option value="">-- Select Category --</option>
-                    <option value="cake">Cake</option>
-                    <option value="chocolate">Chocolate</option>
-                    <option value="candy">Candy</option>
+                    <option value="cake" {{ old('category', $product->category) == 'cake' ? 'selected' : '' }}>Cake</option>
+                    <option value="chocolate" {{ old('category', $product->category) == 'chocolate' ? 'selected' : '' }}>Chocolate</option>
+                    <option value="candy" {{ old('category', $product->category) == 'candy' ? 'selected' : '' }}>Candy</option>
                 </select>
             </div>
+
 
             <div class="actions">
                 <button type="submit" class="btn btn-primary">Edit Product</button>
