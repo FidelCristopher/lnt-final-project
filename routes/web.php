@@ -70,6 +70,10 @@ Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 
 Route::get('/search', [ProductController::class, 'search'])->name('search');
 
+Route::get('/dashboard', function () {
+    return redirect()->route('home');
+})->name('dashboard');
+
 
 // Product resource routes
 Route::resource('products', ProductController::class)->middleware('auth');
