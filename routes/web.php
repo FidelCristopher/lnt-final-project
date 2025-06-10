@@ -68,6 +68,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 
+Route::get('/search', [ProductController::class, 'search'])->name('search');
+
+
 // Product resource routes
 Route::resource('products', ProductController::class)->middleware('auth');
 

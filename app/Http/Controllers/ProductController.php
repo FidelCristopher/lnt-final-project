@@ -88,6 +88,14 @@ class ProductController extends Controller
         return redirect()->route('overview')->with('success', 'Product deleted successfully!');
     }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->input('q');
+
+        $products = Product::where('name', 'like', '%' . $keyword . '%')->get();
+
+        return view('products.search', compact('products', 'keyword'));
+    }
 
 
 }

@@ -160,22 +160,34 @@
             <!-- Search Bar di tengah -->
             <div class="flex-grow-1 mx-3 d-none d-lg-block">
               <div class="search-bar row bg-light p-2 rounded-4 m-0">
-                <div class="col-md-4 d-none d-md-block p-0">
-                  <select class="form-select border-0 bg-transparent">
-                    <option>All Categories</option>
-                    <option>Foods</option>
-                    <option>Beverages</option>
-                  </select>
-                </div>
                 <div class="col-11 col-md-7 p-0">
-                  <form id="search-form" class="text-center" action="index.html" method="post">
-                    <input type="text" class="form-control border-0 bg-transparent" placeholder="Search for more than 20,000 products" />
-                  </form>
-                </div>
-                <div class="col-1 p-0 d-flex align-items-center justify-content-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                    <path fill="currentColor" d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z"/>
-                  </svg>
+                  <form id="search-form" class="text-center w-100" action="{{ route('search') }}" method="GET">
+                    <div class="search-bar row bg-light p-2 rounded-4 m-0">
+                        <div class="col-md-5 d-none d-md-block p-0">
+                        <select class="form-select border-0 bg-transparent" name="category">
+                            <option value="">All Categories</option>
+                            <option value="foods">Foods</option>
+                            <option value="beverages">Beverages</option>
+                        </select>
+                        </div>
+                        <div class="col-1 p-0 d-flex align-items-center justify-content-center">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M21.71 20.29L18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a1 1 0 0 0 1.42 0a1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 7-7a7 7 0 0 1-7 7Z"/>
+                          </svg>
+                        </div>
+                        <div class="col-11 col-md-5 p-0">
+                        <input type="text" name="q" class="form-control border-0 bg-transparent" placeholder="Search for more than 20,000 products" />
+                        </div>
+                        <div class="col-1 p-0 d-flex align-items-center justify-content-center">
+                        <button type="submit" class="btn border-0 bg-transparent p-0">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
+                            <path fill="currentColor" d="..." />
+                            </svg>
+                        </button>
+                        </div>
+                    </div>
+                    </form>
+
                 </div>
               </div>
             </div>
