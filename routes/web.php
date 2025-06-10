@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 
 Route::get('/', function () {
     return view('home');
@@ -61,6 +63,10 @@ Route::middleware(['auth', AdminOnly::class])->group(function () {
 
 // Redirect /products ke /admin/products
 Route::redirect('/products', '/admin/products');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 
 // Product resource routes
 Route::resource('products', ProductController::class)->middleware('auth');

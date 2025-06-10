@@ -16,6 +16,12 @@
             <a href="#">Sales</a>
             <a href="#">Payment</a>
             <a href="#">Returns</a>
+            <form action="{{ route('logout') }}" method="POST" style="margin-top: 20px;">
+                @csrf
+                <button type="submit" style="background: none; border: none; color: red; cursor: pointer;">
+                    Logout
+                </button>
+            </form>
         </nav>
     </div>
 
